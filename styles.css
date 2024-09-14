@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Tourney:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Tilt+Prism&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap');
+*, ::before, ::after{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(#8f0a94 0%, #b64aa2 33.33%, #2d94d9 66.67%, #08013e 100%);
+    font-family: Arial;
+    color: white;
+}
+.header{
+    padding: 1% 0% 1% 5%;
+    background-color: black;
+}
+.inicio {
+    display: flex; /* Usa Flexbox para alinear los elementos */
+    justify-content: center; /* Centra horizontalmente el contenido dentro del contenedor */
+    align-items: center; /* Centra verticalmente el contenido dentro del contenedor */
+    gap: 30%; /* Opcional: añade un espacio entre los elementos, ajusta según sea necesario */
+    width: 10%;
+}
+.inicio_menu {
+    font-family: "Tourney", sans-serif;
+    text-decoration: none;
+    color: #32c900;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.inicio_menu:hover{
+    color: var(--color-secundario);
+}
+.title{
+    font-family: "Tourney", sans-serif;
+    color: #ac306e;  
+}
+
+.game__message{
+    color: #ffffff;
+    text-align: center;
+}
+
+.game{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    gap: 1rem;
+    place-content: center;
+}
+
+.game__board{
+    width: 300px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.cell{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #32c900;
+    display: grid;
+    place-items: center;
+    grid-template-areas: "draw";
+    cursor: pointer;
+}
+
+.circle::after{
+    content: "";
+    grid-area: draw;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 10px solid rgb(7, 0, 0);
+    animation: show .3s;
+}
+
+.cross::after{
+    content: "";
+    grid-area: draw;
+    display: block;
+    width: 10px;
+    height: 70px;
+    background-color: white;
+    transform: rotate(45deg);
+    border-radius: 10px;
+    animation: show-reverse .3s;
+}
+
+.cross::before{
+    content: "";
+    grid-area: draw;
+    display: block;
+    width: 10px;
+    height: 70px;
+    background-color: white;
+    transform: rotate(-45deg);
+    border-radius: 10px;
+    animation: show .3s;
+}
+
+@keyframes show {
+    0%{
+        transform: scale(0) rotate(-45deg);
+    }
+    100%{
+        transform: scale(1) rotate(-45deg);
+    }
+}
+
+@keyframes show-reverse {
+    0%{
+        transform: scale(0) rotate(45deg);
+    }
+    100%{
+        transform: scale(1) rotate(45deg);
+    }
+}
+
+
+
+.endgame{
+    background-color: #000000bc;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+
+    display: grid;
+    place-content: center;
+}
+
+.endgame__show{
+    display: grid;
+    gap: 1rem;
+    text-align: center;
+}
+
+.endgame__button{
+    background-color: dodgerblue;
+    font-weight: bold;
+    color: white;
+    padding: 1rem 2rem;
+    margin: 0 auto;
+    width: max-content;
+    border: none;
+    border-radius: 100px;
+}
+
+.show{
+    opacity: 1;
+    pointer-events: unset;
+}
